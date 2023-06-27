@@ -1,6 +1,6 @@
-esaddr=127.0.0.1
-port=8060
-curl -s --connect-timeout 10 -o /dev/null  http://${esaddr}:${port}/_cat/nodes >/dev/null 2>&1 
+esaddr=10.71.7.89
+port=9200
+curl -s --connect-timeout 10 -o /dev/null  http://${esaddr}:${port}/_cat/nodes >/dev/null 2>&1
 if [ "$?" != "0" ];then
     echo "Elasticserach 访问失败, 请安装完后检查并重新执行该脚本 "
     exit
@@ -106,7 +106,7 @@ curl -s --connect-timeout 10 -o /dev/null -X POST -H 'cache-control: no-cache' -
       }
     },
     "aliases" : { }
-  }' 
+  }'
 
 curl -s -o /dev/null -X POST -H 'cache-control: no-cache' -H 'content-type: application/json' http://${esaddr}:${port}/_template/ks_kafka_cluster_metric -d '{
     "order" : 10,
@@ -293,7 +293,7 @@ curl -s -o /dev/null -X POST -H 'cache-control: no-cache' -H 'content-type: appl
       }
     },
     "aliases" : { }
-   }' 
+   }'
 
 curl -s -o /dev/null -X POST -H 'cache-control: no-cache' -H 'content-type: application/json' http://${esaddr}:${port}/_template/ks_kafka_group_metric -d '{
     "order" : 10,
@@ -368,7 +368,7 @@ curl -s -o /dev/null -X POST -H 'cache-control: no-cache' -H 'content-type: appl
       }
     },
     "aliases" : { }
-  }' 
+  }'
 
 curl -s -o /dev/null -X POST -H 'cache-control: no-cache' -H 'content-type: application/json' http://${esaddr}:${port}/_template/ks_kafka_partition_metric -d '{
     "order" : 10,
@@ -434,7 +434,7 @@ curl -s -o /dev/null -X POST -H 'cache-control: no-cache' -H 'content-type: appl
       }
     },
     "aliases" : { }
-  }' 
+  }'
 
 curl -s -o /dev/null -X POST -H 'cache-control: no-cache' -H 'content-type: application/json' http://${esaddr}:${port}/_template/ks_kafka_topic_metric -d '{
     "order" : 10,
